@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Flask Demo</title>
+	<script type="text/javascript" src="./static/lib/d3.js"></script>
+</head>
+<body>
+	<div>This is a page</div>
+	<div id="event"></div>
+
+	<script type="text/javascript">
+
+		var feature = d3.select("#event");
+
+		d3.json("/getData/", function(d) {
+			console.log(d);
+			feature.text('The time is now: ' + d.out);
+		});
+
+	</script>
+
+</body>
+</html>
