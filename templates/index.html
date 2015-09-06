@@ -1,45 +1,10 @@
 <html>
 <head>
 	<title>Flask Demo</title>
-	<script type="text/javascript" src="./static/lib/d3.js"></script>
-	<script type="text/javascript" src="./static/lib/leaflet.js"></script>
-	<link rel="stylesheet" href="./static/lib/leaflet.css" />
-
-	<style>
-		body {
-		    padding: 0;
-		    margin: 0;
-		}
-		html, body, #map {
-		    height: 100%;
-		}
-	</style>
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
+	
 </head>
 <body>
-	<!-- <div>This is a page</div> -->
-	<!-- <div id="event"></div> -->
-
-	<div id="map"></div>
-
-	<script type="text/javascript">
-
-		var map = L.map('map').setView([22.399961, 114.117523], 11);
-
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(map);
-
-		// var feature = d3.select("#event");
-
-		// d3.json("/getData/", function(d) {
-		// 	console.log(d);
-		// 	feature.text('The time is now: ' + d.out);
-		// });
-
-	</script>
-
+	<div>This is a page</div>
+	
 </body>
 </html>
