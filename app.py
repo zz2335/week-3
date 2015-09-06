@@ -29,11 +29,11 @@ def getData():
 		print "database [" + db_name + "] does not exist! session ending..."
 		sys.exit()
 		
-	lat1 = 22.523371
-	lat2 = 22.552307
+	lat1 = 22.532498
+	lat2 = 22.552317
 
-	lng1 = 114.030833
-	lng2 = 114.091558
+	lng1 = 114.044329
+	lng2 = 114.076644
 
 	query = 'SELECT FROM Listing WHERE latitude BETWEEN {} AND {} AND longitude BETWEEN {} AND {}'
 
@@ -44,16 +44,16 @@ def getData():
 
 	client.db_close()
 
-	output = {"points":{"type":"FeatureCollection","features":[]}}
+	output = {"type":"FeatureCollection","features":[]}
 
 	for record in records:
-		recordDict = {"type":"Feature","properties":{},"geometry":{"type":"Point"}}
-		recordDict["id"] = record._rid
-		recordDict["properties"]["name"] = record.title
-		recordDict["properties"]["price"] = record.price
-		recordDict["geometry"]["coordinates"] = [record.longitude, record.latitude]
+		feature = {"type":"Feature","properties":{},"geometry":{"type":"Point"}}
+		feature["id"] = record._rid
+		feature["properties"]["name"] = record.title
+		feature["properties"]["price"] = record.price
+		feature["geometry"]["coordinates"] = [record.latitude, record.longitude]
 
-		output["points"]["features"].append(recordDict)
+		output["features"].append(feature)
 
 	return json.dumps(output)
 
