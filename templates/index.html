@@ -86,6 +86,7 @@
 
 			    // update circle position
 			    circles
+			    	// [IMPLEMENT ]
 			    	.attr("cx", function(d) { return projectPoint(d.geometry.coordinates[0], d.geometry.coordinates[1]).x; })
 			    	.attr("cy", function(d) { return projectPoint(d.geometry.coordinates[0], d.geometry.coordinates[1]).y; });
 			};
