@@ -19,8 +19,7 @@
 		*/
 		circle {
 			fill-opacity: 0;
-			stroke: red;
-			stroke-width: 5px;
+			stroke-width: 1px;
 		}
 	</style>
 
@@ -36,18 +35,15 @@
 		var map = L.map('map').setView([22.539029, 114.062076], 16);
 
 		//this is the OpenStreetMap tile implementation
-
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(map);
+     		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+ 		}).addTo(map);
 
 		//uncomment for Mapbox implementation, and supply your own access token
-
-		// L.tileLayer('https://api.tiles.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token={accessToken}', {
-		// 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		// 	mapid: 'mapbox.light',
-		// 	accessToken: [INSERT YOUR TOKEN HERE!]
-		// }).addTo(map);
+		//L.tileLayer('https://api.tiles.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token={accessToken}', {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+			//mapid: 'mapbox.light',
+			//accessToken: 'sk.eyJ1IjoiemhpcGVuZyIsImEiOiJjaWZidWtvaDIzMDBkc3lseHhhNHVjbTVoIn0.Kwzp-zztj87ROILwKtbGBA'
+		//}).addTo(map);
 
 		//create variables to store a reference to svg and g elements
 
@@ -99,8 +95,17 @@
 			    	// hint: the price of each data point can be accessed in d.properites.price
 			    	// you can use an anonymous function to access this data for every point, just like we have done for the geographic coordinates
 			    	// for an extra challenge, see if you can change the color of the circles to correspond to some data as well!
+			    	.attr("r",function(d) {return d.properties.price/1000;})
+
+			    	.attr("stroke",function(d){if (d.properties.price/1000 > 10){
+			    			return "red";}
+			    		else{
+			    			return "yellow";}
+			    	})
+
 			    	.attr("cx", function(d) { return projectPoint(d.geometry.coordinates[0], d.geometry.coordinates[1]).x; })
 			    	.attr("cy", function(d) { return projectPoint(d.geometry.coordinates[0], d.geometry.coordinates[1]).y; });
+			    
 			};
 
 			// call function to 
